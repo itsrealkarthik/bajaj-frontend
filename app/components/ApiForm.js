@@ -9,16 +9,24 @@ export default function ApiForm({ setResponseData }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const parsedData = JSON.parse(jsonInput);
-        console.log(parsedData.data);
-        const response = await axios.post('https://bajaj-round.vercel.app/bfhl/', parsedData.data);
-        setResponseData(response.data);
-        setError(null);
+        const parsedData = JSON.parse(jsonInput); // Parse the JSON input string
+        console.log(parsedData.data); // This logs the 'data' array
+
+        // Send the parsedData object in the POST request
+        const response = await axios.post('https://bajaj-round.vercel.app/bfhl', parsedData, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        setResponseData(response.data); // Update the state with the API response
+        setError(null); // Clear any previous errors
     } catch (err) {
-        console.log(err);
-        setError('Failed to submit data');
+        console.log(err); // Log the error to the console
+        setError('Failed to submit data'); // Update the error state
     }
 };
+
 
 
   return (
