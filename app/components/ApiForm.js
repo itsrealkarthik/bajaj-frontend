@@ -10,6 +10,7 @@ export default function ApiForm({ setResponseData }) {
     e.preventDefault();
     try {
         const parsedData = JSON.parse(jsonInput);
+        console.log(parsedData.data);
         const response = await axios.post('https://bajaj-round.vercel.app/bfhl/', parsedData.data);
         setResponseData(response.data);
         setError(null);
