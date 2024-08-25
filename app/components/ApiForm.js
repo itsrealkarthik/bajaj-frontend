@@ -9,19 +9,8 @@ export default function ApiForm({ setResponseData }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        // Parse the input JSON
         const parsedData = JSON.parse(jsonInput);
-
-        // Ensure that the structure matches RequestModel
-        const payload = {
-            full_name: parsedData.full_name,
-            dob: parsedData.dob,
-            numbers: parsedData.numbers,
-            alphabets: parsedData.alphabets
-        };
-
-        // Send the POST request
-        const response = await axios.post('https://bajaj-round.vercel.app/bfhl/', payload);
+        const response = await axios.post('https://bajaj-round.vercel.app/bfhl/', parsedData.data);
         setResponseData(response.data);
         setError(null);
     } catch (err) {
