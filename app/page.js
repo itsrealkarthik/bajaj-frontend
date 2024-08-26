@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1>JSON Processor</h1>
+      <h1>Bajaj Round 1</h1>
       <ApiForm setResponseData={setResponseData} />
       {responseData && <FilterResponse responseData={responseData} />}
     </div>
